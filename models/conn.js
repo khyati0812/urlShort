@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+mongoose.set("strictQuery", false);
 const Url = new mongoose.Schema({
   url: { type: String, required: true, unique: true },
   redirectUrl: { type: String, required: true },
@@ -8,7 +9,7 @@ const Url = new mongoose.Schema({
     default: 0,
   },
 });
-const useUrl = mongoose.model("user", Url);
+const useUrl = mongoose.model("user", Url, "users");
 useUrl.createIndexes();
 console.log(Url);
-module.exports = useUrl;
+module.exports = { useUrl };

@@ -5,6 +5,7 @@ const { useUrl } = require("./models/conn");
 const { router } = require("./routes/req");
 console.log(router);
 const app = express();
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use("/url", router);
 const mongourl = "mongodb://127.0.0.1:27017/url_shortener_prac";
